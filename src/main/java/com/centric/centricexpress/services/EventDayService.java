@@ -1,20 +1,27 @@
 package com.centric.centricexpress.services;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.centric.centricexpress.models.EventDay;
 import com.centric.centricexpress.repositories.EventDayRepository;
 
+@Service
 public class EventDayService {
     @Autowired
     private EventDayRepository eventDayRepository;
 
-    public void createEventDay(String date) {
+    public EventDay createEventDay(String date) {
         EventDay eventDay = new EventDay(getLocalDateFromString(date));
 
-        eventDayRepository.save(eventDay);
+        return eventDayRepository.save(eventDay);
+    }
+
+    public void removeEventDay(Long eventDayId) {
+        eventDayRepository.delete(eventDayId);
     }
 
     public void addEvent(Long eventId, Long eventDayId) {
@@ -39,7 +46,12 @@ public class EventDayService {
         return eventDayRepository.findById(id);
     }
 
-    public LocalDate getLocalDateFromString(String date) {
+    public List<EventDay> getAllEventDays() {
+        return eventDayRepository.findAll();
+    }
+
+    private LocalDate getLocalDateFromString(String date) {
         return LocalDate.parse(date);
     }
+
 }
