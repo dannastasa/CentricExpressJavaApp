@@ -17,7 +17,7 @@ public class Event {
 
     private LocalTime endTime;
 
-    private List<EventAttendant> attendants;
+    private List<Long> attendants;
 
     public Event(String name, String description, String location, LocalTime startTime, LocalTime endTime) {
         this.name = name;
@@ -26,12 +26,6 @@ public class Event {
         this.startTime = startTime;
         this.endTime = endTime;
         attendants = new ArrayList<>();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        Event otherEvent = (Event) other;
-        return id == otherEvent.getId();
     }
 
     public Long getId() {
@@ -66,11 +60,11 @@ public class Event {
         this.location = location;
     }
 
-    public List<EventAttendant> getAttendants() {
+    public List<Long> getAttendants() {
         return attendants;
     }
 
-    public void setAttendants(List<EventAttendant> attendants) {
+    public void setAttendants(List<Long> attendants) {
         this.attendants = attendants;
     }
 

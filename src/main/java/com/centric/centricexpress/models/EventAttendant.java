@@ -12,12 +12,6 @@ public class EventAttendant {
         this.lastName = lastName;
     }
 
-    @Override
-    public boolean equals(Object other) {
-        EventAttendant otherAttendant = (EventAttendant) other;
-        return otherAttendant.getId() == id;
-    }
-
     public Long getId() {
         return id;
     }

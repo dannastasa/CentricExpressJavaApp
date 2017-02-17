@@ -7,7 +7,7 @@ import java.util.List;
 public class EventDay {
     private Long id;
 
-    private List<Event> events;
+    private List<Long> events;
 
     private LocalDate date;
 
@@ -24,11 +24,11 @@ public class EventDay {
         this.id = id;
     }
 
-    public List<Event> getEvents() {
+    public List<Long> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(List<Long> events) {
         this.events = events;
     }
 
