@@ -16,7 +16,7 @@ public class Event {
 
     private LocalTime endTime;
 
-    private List<EventAttendant> attendats;
+    private List<Long> attendats;
 
     public Long getId() {
         return id;
@@ -50,11 +50,11 @@ public class Event {
         this.location = location;
     }
 
-    public List<EventAttendant> getAttendats() {
+    public List<Long> getAttendats() {
         return attendats;
     }
 
-    public void setAttendats(List<EventAttendant> attendats) {
+    public void setAttendats(List<Long> attendats) {
         this.attendats = attendats;
     }
 
