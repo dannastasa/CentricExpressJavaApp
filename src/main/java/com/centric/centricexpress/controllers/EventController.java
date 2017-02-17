@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import com.centric.centricexpress.services.EventAttendantService;
 import com.centric.centricexpress.services.EventDayService;
 import com.centric.centricexpress.services.EventService;
 
+@Controller
 public class EventController {
 
     @Autowired
