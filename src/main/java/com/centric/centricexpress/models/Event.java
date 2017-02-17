@@ -1,6 +1,7 @@
 package com.centric.centricexpress.models;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Event {
@@ -16,7 +17,22 @@ public class Event {
 
     private LocalTime endTime;
 
-    private List<EventAttendant> attendats;
+    private List<EventAttendant> attendants;
+
+    public Event(String name, String description, String location, LocalTime startTime, LocalTime endTime) {
+        this.name = name;
+        this.description = description;
+        this.location = location;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        attendants = new ArrayList<>();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        Event otherEvent = (Event) other;
+        return id == otherEvent.getId();
+    }
 
     public Long getId() {
         return id;
@@ -50,12 +66,12 @@ public class Event {
         this.location = location;
     }
 
-    public List<EventAttendant> getAttendats() {
-        return attendats;
+    public List<EventAttendant> getAttendants() {
+        return attendants;
     }
 
-    public void setAttendats(List<EventAttendant> attendats) {
-        this.attendats = attendats;
+    public void setAttendants(List<EventAttendant> attendants) {
+        this.attendants = attendants;
     }
 
     public LocalTime getStartTime() {

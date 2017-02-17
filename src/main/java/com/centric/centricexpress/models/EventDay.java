@@ -1,6 +1,7 @@
 package com.centric.centricexpress.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventDay {
@@ -9,6 +10,11 @@ public class EventDay {
     private List<Event> events;
 
     private LocalDate date;
+
+    public EventDay(LocalDate date) {
+        this.date = date;
+        events = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;

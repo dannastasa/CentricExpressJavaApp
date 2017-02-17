@@ -7,6 +7,17 @@ public class EventAttendant {
 
     private String lastName;
 
+    public EventAttendant(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        EventAttendant otherAttendant = (EventAttendant) other;
+        return otherAttendant.getId() == id;
+    }
+
     public Long getId() {
         return id;
     }
