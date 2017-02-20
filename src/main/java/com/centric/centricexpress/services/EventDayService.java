@@ -21,7 +21,7 @@ public class EventDayService {
         return eventDayRepository.save(eventDay);
     }
 
-    public void removeEventDay(Long eventDayId) {
+    public void removeEventDay(String eventDayId) {
         eventDayRepository.delete(eventDayId);
     }
 
