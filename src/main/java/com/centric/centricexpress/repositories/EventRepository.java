@@ -9,7 +9,7 @@ import com.centric.centricexpress.models.Event;
 
 @Repository
 public interface EventRepository extends MongoRepository<Event, Long> {
-    Event findById(Long id);
+    Event findById(String id);
 
     Event findEventByName(String name);
 

@@ -21,14 +21,14 @@ public class EventService {
         return eventRepository.save(newEvent);
     }
 
-    public void addAttendant(Long eventId, Long attendantId) {
+    public void addAttendant(String eventId, String attendantId) {
         Event event = eventRepository.findById(eventId);
 
         event.getAttendants().add(attendantId);
         eventRepository.save(event);
     }
 
-    public void removeAttendant(Long eventId, Long attendantId) {
+    public void removeAttendant(String eventId, String attendantId) {
         Event event = eventRepository.findById(eventId);
 
         event.getAttendants().remove(attendantId);
@@ -39,7 +39,7 @@ public class EventService {
         eventRepository.delete(id);
     }
 
-    public Event getEventById(Long id) {
+    public Event getEventById(String id) {
         return eventRepository.findById(id);
     }
 

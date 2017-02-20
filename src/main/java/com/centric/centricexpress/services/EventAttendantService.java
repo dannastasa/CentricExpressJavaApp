@@ -18,11 +18,12 @@ public class EventAttendantService {
         return eventAttendantRepository.save(attendant);
     }
 
-    public EventAttendant getById(Long id) {
+    public EventAttendant getById(String id) {
         return eventAttendantRepository.findById(id);
     }
 
-    public void delete(Long id) {
-        eventAttendantRepository.delete(id);
+    public void delete(String id) {
+        EventAttendant attendant = eventAttendantRepository.findById(id);
+        eventAttendantRepository.delete(attendant);
     }
 }
