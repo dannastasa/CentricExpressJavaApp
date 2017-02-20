@@ -9,9 +9,9 @@ import org.springframework.data.annotation.Id;
 public class EventDay {
 
     @Id
-    private Long id;
+    private String id;
 
-    private List<Long> events;
+    private List<String> events;
 
     private LocalDate date;
 
@@ -20,19 +20,19 @@ public class EventDay {
         events = new ArrayList<>();
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public List<Long> getEvents() {
+    public List<String> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Long> events) {
+    public void setEvents(List<String> events) {
         this.events = events;
     }
 
