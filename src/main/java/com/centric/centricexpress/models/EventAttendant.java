@@ -1,6 +1,10 @@
 package com.centric.centricexpress.models;
 
+import org.springframework.data.annotation.Id;
+
 public class EventAttendant {
+
+    @Id
     private Long id;
 
     private String firstName;

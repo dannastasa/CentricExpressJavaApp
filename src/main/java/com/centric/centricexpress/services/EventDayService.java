@@ -11,6 +11,7 @@ import com.centric.centricexpress.repositories.EventDayRepository;
 
 @Service
 public class EventDayService {
+
     @Autowired
     private EventDayRepository eventDayRepository;
 
@@ -39,7 +40,7 @@ public class EventDayService {
     }
 
     public EventDay findByDay(String date) {
-        return eventDayRepository.findByDay(getLocalDateFromString(date));
+        return eventDayRepository.findByDate(getLocalDateFromString(date));
     }
 
     public EventDay findById(Long id) {

@@ -8,6 +8,7 @@ import com.centric.centricexpress.repositories.EventAttendantRepository;
 
 @Service
 public class EventAttendantService {
+
     @Autowired
     private EventAttendantRepository eventAttendantRepository;
 
