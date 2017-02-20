@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 public class Event {
 
     @Id
-    private Long id;
+    private String id;
 
     private String name;
 
@@ -21,7 +21,7 @@ public class Event {
 
     private LocalTime endTime;
 
-    private List<Long> attendants;
+    private List<String> attendants;
 
     public Event(String name, String description, String location, LocalTime startTime, LocalTime endTime) {
         this.name = name;
@@ -32,11 +32,11 @@ public class Event {
         attendants = new ArrayList<>();
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -64,11 +64,11 @@ public class Event {
         this.location = location;
     }
 
-    public List<Long> getAttendants() {
+    public List<String> getAttendants() {
         return attendants;
     }
 
-    public void setAttendants(List<Long> attendants) {
+    public void setAttendants(List<String> attendants) {
         this.attendants = attendants;
     }
 
