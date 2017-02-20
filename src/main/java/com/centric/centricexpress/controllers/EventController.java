@@ -37,7 +37,7 @@ public class EventController {
 
     @GetMapping(value = "/event/{id}")
     @ResponseBody
-    public Event getEventById(@PathVariable Long id) {
+    public Event getEventById(@PathVariable String id) {
         return eventService.getEventById(id);
     }
 
@@ -49,7 +49,7 @@ public class EventController {
 
     @GetMapping(value = "/eventDay/{id}")
     @ResponseBody
-    public List<Event> getEventsForDay(@PathVariable Long eventDayId) {
+    public List<Event> getEventsForDay(@PathVariable String eventDayId) {
         EventDay eventDay = eventDayService.findById(eventDayId);
 
         List<Event> events = eventDay.getEvents()
@@ -69,7 +69,7 @@ public class EventController {
 
     @GetMapping(value = "/event/{id}/attendants")
     @ResponseBody
-    public List<EventAttendant> getAttendantsForEvent(@PathVariable Long eventId) {
+    public List<EventAttendant> getAttendantsForEvent(@PathVariable String eventId) {
         Event event = eventService.getEventById(eventId);
 
         return event.getAttendants()
@@ -85,7 +85,7 @@ public class EventController {
     }
 
     @DeleteMapping(value = "/eventDay/{eventDayId}")
-    public void removeEventDay(@PathVariable(value = "eventDayId") Long eventDayId) {
+    public void removeEventDay(@PathVariable(value = "eventDayId") String eventDayId) {
         EventDay eventDay = eventDayService.findById(eventDayId);
 
         eventDay.getEvents()
@@ -97,7 +97,7 @@ public class EventController {
 
     @PostMapping(value = "/event")
     @ResponseBody
-    public Event createEvent(@RequestParam(value = "eventDayId") Long eventDayId,
+    public Event createEvent(@RequestParam(value = "eventDayId") String eventDayId,
             @RequestParam(value = "name") String name,
             @RequestParam(value = "description") String description,
             @RequestParam(value = "location") String location,
@@ -112,7 +112,7 @@ public class EventController {
 
     @DeleteMapping(value = "/event/{eventId}")
     @ResponseBody
-    public void removeEvent(@PathVariable(value = "eventId") Long eventId) {
+    public void removeEvent(@PathVariable(value = "eventId") String eventId) {
         List<EventDay> allEventDays = eventDayService.getAllEventDays();
         Optional<EventDay> eventDayForEvent = allEventDays.stream()
                 .filter(eventDay -> eventDay.getEvents().contains(eventId))
@@ -132,15 +132,15 @@ public class EventController {
     }
 
     @PostMapping("/event/assign")
-    public void assignAttendant(@RequestParam(value = "eventId") Long eventId,
-            @RequestParam(value = "attendantId") Long attendantId) {
+    public void assignAttendant(@RequestParam(value = "eventId") String eventId,
+            @RequestParam(value = "attendantId") String attendantId) {
 
         eventService.addAttendant(eventId, attendantId);
     }
 
     @PostMapping("/event/remove")
-    public void removeAttendant(@RequestParam(value = "eventId") Long eventId,
-            @RequestParam(value = "attendantId") Long attendantId) {
+    public void removeAttendant(@RequestParam(value = "eventId") String eventId,
+            @RequestParam(value = "attendantId") String attendantId) {
 
         eventService.removeAttendant(eventId, attendantId);
     }

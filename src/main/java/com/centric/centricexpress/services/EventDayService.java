@@ -21,18 +21,18 @@ public class EventDayService {
         return eventDayRepository.save(eventDay);
     }
 
-    public void removeEventDay(Long eventDayId) {
+    public void removeEventDay(String eventDayId) {
         eventDayRepository.delete(eventDayId);
     }
 
-    public void addEvent(Long eventId, Long eventDayId) {
+    public void addEvent(String eventId, String eventDayId) {
         EventDay eventDay = eventDayRepository.findById(eventDayId);
 
         eventDay.getEvents().add(eventId);
         eventDayRepository.save(eventDay);
     }
 
-    public void removeEvent(Long eventId, Long eventDayId) {
+    public void removeEvent(String eventId, String eventDayId) {
         EventDay eventDay = eventDayRepository.findById(eventDayId);
 
         eventDay.getEvents().remove(eventId);
@@ -43,7 +43,7 @@ public class EventDayService {
         return eventDayRepository.findByDate(getLocalDateFromString(date));
     }
 
-    public EventDay findById(Long id) {
+    public EventDay findById(String id) {
         return eventDayRepository.findById(id);
     }
 
