@@ -10,6 +10,7 @@ import com.centric.centricexpress.repositories.EventRepository;
 
 @Service
 public class EventService {
+
     @Autowired
     private EventRepository eventRepository;
 
