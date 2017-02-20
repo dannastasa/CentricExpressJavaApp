@@ -4,7 +4,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+
 public class Event {
+
+    @Id
     private Long id;
 
     private String name;
