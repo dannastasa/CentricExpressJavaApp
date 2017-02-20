@@ -11,5 +11,5 @@ import com.centric.centricexpress.models.EventDay;
 public interface EventDayRepository extends MongoRepository<EventDay, Long> {
     EventDay findById(Long id);
 
-    EventDay findByDay(LocalDate date);
+    EventDay findByDate(LocalDate date);
 }
