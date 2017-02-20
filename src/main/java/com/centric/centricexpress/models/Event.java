@@ -1,9 +1,14 @@
 package com.centric.centricexpress.models;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+
 public class Event {
+
+    @Id
     private Long id;
 
     private String name;
@@ -16,7 +21,16 @@ public class Event {
 
     private LocalTime endTime;
 
-    private List<Long> attendats;
+    private List<Long> attendants;
+
+    public Event(String name, String description, String location, LocalTime startTime, LocalTime endTime) {
+        this.name = name;
+        this.description = description;
+        this.location = location;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        attendants = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;
@@ -50,12 +64,12 @@ public class Event {
         this.location = location;
     }
 
-    public List<Long> getAttendats() {
-        return attendats;
+    public List<Long> getAttendants() {
+        return attendants;
     }
 
-    public void setAttendats(List<Long> attendats) {
-        this.attendats = attendats;
+    public void setAttendants(List<Long> attendants) {
+        this.attendants = attendants;
     }
 
     public LocalTime getStartTime() {
