@@ -6,6 +6,7 @@ import com.centric.centricexpress.models.EventAttendant;
 import com.centric.centricexpress.repositories.EventAttendantRepository;
 
 public class EventAttendantService {
+
     @Autowired
     private EventAttendantRepository eventAttendantRepository;
 

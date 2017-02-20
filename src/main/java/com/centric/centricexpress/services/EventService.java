@@ -8,6 +8,7 @@ import com.centric.centricexpress.models.Event;
 import com.centric.centricexpress.repositories.EventRepository;
 
 public class EventService {
+
     @Autowired
     private EventRepository eventRepository;
 
