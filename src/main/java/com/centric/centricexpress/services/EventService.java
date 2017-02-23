@@ -22,26 +22,26 @@ public class EventService {
     }
 
     public void addAttendant(String eventId, String attendantId) {
-        Event event = eventRepository.findById(eventId);
+        Event event = eventRepository.findOne(eventId);
 
         event.getAttendants().add(attendantId);
         eventRepository.save(event);
     }
 
     public void removeAttendant(String eventId, String attendantId) {
-        Event event = eventRepository.findById(eventId);
+        Event event = eventRepository.findOne(eventId);
 
         event.getAttendants().remove(attendantId);
         eventRepository.save(event);
     }
 
     public void deleteEvent(String id) {
-        Event event = eventRepository.findById(id);
+        Event event = eventRepository.findOne(id);
         eventRepository.delete(event);
     }
 
     public Event getEventById(String id) {
-        return eventRepository.findById(id);
+        return eventRepository.findOne(id);
     }
 
     private LocalTime getTimeFromString(String time) {

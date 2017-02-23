@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 public class EventDay {
 
     @Id
-    private String id;
+    private String eventDayId;
 
     private List<String> events;
 
@@ -20,12 +20,12 @@ public class EventDay {
         events = new ArrayList<>();
     }
 
-    public String getId() {
-        return id;
+    public String getEventDayId() {
+        return eventDayId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEventDayId(String eventDayId) {
+        this.eventDayId = eventDayId;
     }
 
     public List<String> getEvents() {

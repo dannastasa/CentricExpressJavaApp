@@ -19,11 +19,11 @@ public class EventAttendantService {
     }
 
     public EventAttendant getById(String id) {
-        return eventAttendantRepository.findById(id);
+        return eventAttendantRepository.findOne(id);
     }
 
     public void delete(String id) {
-        EventAttendant attendant = eventAttendantRepository.findById(id);
+        EventAttendant attendant = eventAttendantRepository.findOne(id);
         eventAttendantRepository.delete(attendant);
     }
 }

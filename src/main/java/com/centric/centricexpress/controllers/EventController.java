@@ -51,7 +51,7 @@ public class EventController {
         return eventDayService.getAllEventDays();
     }
 
-    @GetMapping(value = "/eventDay/{id}")
+    @GetMapping(value = "/eventDay/{eventDayId}")
     @ResponseBody
     public List<Event> getEventsForDay(@PathVariable String eventDayId) {
         EventDay eventDay = eventDayService.findById(eventDayId);
@@ -84,12 +84,12 @@ public class EventController {
 
     @PostMapping(value = "/eventDay")
     @ResponseBody
-    public EventDay createEventDay(@RequestParam(value = "date") String date) {
+    public EventDay createEventDay(@RequestParam String date) {
         return eventDayService.createEventDay(date);
     }
 
     @DeleteMapping(value = "/eventDay/{eventDayId}")
-    public void removeEventDay(@PathVariable(value = "eventDayId") String eventDayId) {
+    public void removeEventDay(@PathVariable String eventDayId) {
         EventDay eventDay = eventDayService.findById(eventDayId);
 
         eventDay.getEvents()
@@ -101,7 +101,7 @@ public class EventController {
 
     @PostMapping(value = "/event")
     @ResponseBody
-    public Event createEvent(@RequestParam(value = "eventDayId") String eventDayId,
+    public Event createEvent(@RequestParam String eventDayId,
             @RequestParam(value = "name") String name,
             @RequestParam(value = "description") String description,
             @RequestParam(value = "location") String location,
@@ -109,42 +109,42 @@ public class EventController {
             @RequestParam(value = "endTime") String endTime) {
         Event event = eventService.createEvent(name, description, location, startTime, endTime);
 
-        eventDayService.addEvent(eventDayId, event.getId());
+        eventDayService.addEvent(eventDayId, event.getEventId());
 
         return event;
     }
 
     @DeleteMapping(value = "/event/{eventId}")
     @ResponseBody
-    public void removeEvent(@PathVariable(value = "eventId") String eventId) {
+    public void removeEvent(@PathVariable String eventId) {
         List<EventDay> allEventDays = eventDayService.getAllEventDays();
         Optional<EventDay> eventDayForEvent = allEventDays.stream()
                 .filter(eventDay -> eventDay.getEvents().contains(eventId))
                 .findFirst();
 
         if (eventDayForEvent.isPresent()) {
-            eventDayService.removeEvent(eventId, eventDayForEvent.get().getId());
+            eventDayService.removeEvent(eventId, eventDayForEvent.get().getEventDayId());
         }
     }
 
     @PostMapping(value = "/attendant")
     @ResponseBody
-    public EventAttendant createAttendant(@RequestParam(value = "firstName") String firstName,
-            @RequestParam(value = "lastName") String lastName) {
+    public EventAttendant createAttendant(@RequestParam String firstName,
+            @RequestParam String lastName) {
 
         return eventAttendantService.create(firstName, lastName);
     }
 
     @PostMapping("/event/assign")
-    public void assignAttendant(@RequestParam(value = "eventId") String eventId,
-            @RequestParam(value = "attendantId") String attendantId) {
+    public void assignAttendant(@RequestParam String eventId,
+            @RequestParam String attendantId) {
 
         eventService.addAttendant(eventId, attendantId);
     }
 
     @PostMapping("/event/remove")
-    public void removeAttendant(@RequestParam(value = "eventId") String eventId,
-            @RequestParam(value = "attendantId") String attendantId) {
+    public void removeAttendant(@RequestParam String eventId,
+            @RequestParam String attendantId) {
 
         eventService.removeAttendant(eventId, attendantId);
     }

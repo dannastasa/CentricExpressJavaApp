@@ -25,15 +25,17 @@ public class EventDayService {
         eventDayRepository.delete(eventDayId);
     }
 
-    public void addEvent(String eventId, String eventDayId) {
-        EventDay eventDay = eventDayRepository.findById(eventDayId);
+    public void addEvent(String eventDayId, String eventId) {
+        EventDay eventDay = eventDayRepository.findOne(eventDayId);
+
+        System.out.println("Event day: " + eventDay);
 
         eventDay.getEvents().add(eventId);
         eventDayRepository.save(eventDay);
     }
 
     public void removeEvent(String eventId, String eventDayId) {
-        EventDay eventDay = eventDayRepository.findById(eventDayId);
+        EventDay eventDay = eventDayRepository.findOne(eventDayId);
 
         eventDay.getEvents().remove(eventId);
         eventDayRepository.save(eventDay);
@@ -44,7 +46,7 @@ public class EventDayService {
     }
 
     public EventDay findById(String id) {
-        return eventDayRepository.findById(id);
+        return eventDayRepository.findOne(id);
     }
 
     public List<EventDay> getAllEventDays() {

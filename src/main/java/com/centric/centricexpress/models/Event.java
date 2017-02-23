@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 public class Event {
 
     @Id
-    private String id;
+    private String eventId;
 
     private String name;
 
@@ -32,12 +32,12 @@ public class Event {
         attendants = new ArrayList<>();
     }
 
-    public String getId() {
-        return id;
+    public String getEventId() {
+        return eventId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 
     public String getName() {

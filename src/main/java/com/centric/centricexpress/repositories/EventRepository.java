@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.centric.centricexpress.models.Event;
 
 @Repository
-public interface EventRepository extends MongoRepository<Event, Long> {
-    Event findById(String id);
+public interface EventRepository extends MongoRepository<Event, String> {
+    // Event findByEventId(String id);
 
     Event findEventByName(String name);
 
