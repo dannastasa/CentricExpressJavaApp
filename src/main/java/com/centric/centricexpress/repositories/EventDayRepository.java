@@ -9,7 +9,5 @@ import com.centric.centricexpress.models.EventDay;
 
 @Repository
 public interface EventDayRepository extends MongoRepository<EventDay, String> {
-    // EventDay findByEventDayId(String id);
-
     EventDay findByDate(LocalDate date);
 }

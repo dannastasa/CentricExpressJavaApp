@@ -9,7 +9,6 @@ import com.centric.centricexpress.models.EventAttendant;
 
 @Repository
 public interface EventAttendantRepository extends MongoRepository<EventAttendant, String> {
-    // EventAttendant findByEventAttendantId(String id);
 
     List<EventAttendant> findByLastName(String lastName);
 
