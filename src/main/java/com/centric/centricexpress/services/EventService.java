@@ -7,17 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.centric.centricexpress.models.Event;
 import com.centric.centricexpress.repositories.EventRepository;
 
-public class EventService {
+public class EventService implements IEventService {
 
     @Autowired
     private EventRepository eventRepository;
 
-    public void createEvent(String name, String description, String location, LocalTime startTime, LocalTime endTime) {
-        Event newEvent = new Event(name, description, location, startTime, endTime);
+    @Override
+    public Event createEvent(String name, String description, String location, String startTime, String endTime) {
+        LocalTime start = LocalTime.parse(startTime);
+        LocalTime end = LocalTime.parse(endTime);
+        Event newEvent = new Event(name, description, location, start, end);
 
-        eventRepository.save(newEvent);
+        return eventRepository.save(newEvent);
     }
 
+    @Override
     public void addAttendant(String eventId, String attendantId) {
         Event event = eventRepository.findById(eventId);
 
@@ -25,6 +29,7 @@ public class EventService {
         eventRepository.save(event);
     }
 
+    @Override
     public void removeAttendant(String eventId, String attendantId) {
         Event event = eventRepository.findById(eventId);
 
@@ -32,10 +37,12 @@ public class EventService {
         eventRepository.save(event);
     }
 
+    @Override
     public void deleteEvent(Long id) {
         eventRepository.delete(id);
     }
 
+    @Override
     public Event getEventById(String id) {
         return eventRepository.findById(id);
     }

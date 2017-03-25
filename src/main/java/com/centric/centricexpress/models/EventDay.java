@@ -20,6 +20,14 @@ public class EventDay {
         events = new ArrayList<>();
     }
 
+    public void addEvent(String id) {
+        if (events == null) {
+            events = new ArrayList<>();
+        }
+
+        events.add(id);
+    }
+
     public String getId() {
         return id;
     }
