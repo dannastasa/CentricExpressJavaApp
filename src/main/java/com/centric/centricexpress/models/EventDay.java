@@ -20,8 +20,21 @@ public class EventDay {
         events = new ArrayList<>();
     }
 
+<<<<<<< HEAD
     public String getEventDayId() {
         return eventDayId;
+=======
+    public void addEvent(String id) {
+        if (events == null) {
+            events = new ArrayList<>();
+        }
+
+        events.add(id);
+    }
+
+    public String getId() {
+        return id;
+>>>>>>> 2e0b0d3ee21a6aab53f846432dc0aaaa24627412
     }
 
     public void setEventDayId(String eventDayId) {
